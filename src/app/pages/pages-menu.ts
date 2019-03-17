@@ -1,18 +1,18 @@
 import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
-  {
+  /*{
     title: 'E-commerce',
     icon: 'nb-e-commerce',
     link: '/pages/dashboard',
     home: true,
-  },
+  },*/
   {
     title: 'IoT Dashboard',
     icon: 'nb-home',
     link: '/pages/iot-dashboard',
   },
-  {
+  {/*
     title: 'FEATURES',
     group: true,
   },
@@ -55,8 +55,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Tree',
         link: '/pages/extra-components/tree',
-      },
-      {
+      },*/
+     /* {
         title: 'Tabs',
         link: '/pages/extra-components/tabs',
       },
@@ -69,8 +69,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/extra-components/chat',
       },
     ],
-  },
-  {
+  },*/
+  /*{
     title: 'Forms',
     icon: 'nb-compose',
     children: [
@@ -91,8 +91,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/forms/datepicker',
       },
     ],
-  },
-  {
+  },*/
+  /*{
     title: 'UI Features',
     icon: 'nb-keypad',
     link: '/pages/ui-features',
@@ -114,8 +114,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/ui-features/search-fields',
       },
     ],
-  },
-  {
+  },*/
+  /*{
     title: 'Modal & Overlays',
     icon: 'nb-layout-default',
     children: [
@@ -140,8 +140,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/modal-overlays/tooltip',
       },
     ],
-  },
-  {
+  },*/
+  /*{
     title: 'Bootstrap',
     icon: 'nb-gear',
     children: [
@@ -158,8 +158,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/bootstrap/modal',
       },
     ],
-  },
-  {
+  },*/
+  /*{
     title: 'Maps',
     icon: 'nb-location',
     children: [
@@ -180,7 +180,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/maps/searchmap',
       },
     ],
-  },
+  },*/
   {
     title: 'Charts',
     icon: 'nb-bar-chart',
@@ -199,7 +199,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
-  {
+  /*{
     title: 'Editors',
     icon: 'nb-title',
     children: [
@@ -212,7 +212,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/editors/ckeditor',
       },
     ],
-  },
+  },*/
   {
     title: 'Tables',
     icon: 'nb-tables',
@@ -223,7 +223,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
-  {
+  /*{
     title: 'Miscellaneous',
     icon: 'nb-shuffle',
     children: [
@@ -232,7 +232,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/miscellaneous/404',
       },
     ],
-  },
+  },*/
   {
     title: 'Auth',
     icon: 'nb-locked',
