@@ -21,8 +21,9 @@ export class TemperatureHumidityService extends TemperatureHumidityData {
   }
 
   getTemperatureData(): Observable<Temperature> {
-    return observableOf(this.temperatureDate);
     this.http.get("url-to-firebase").subscribe();
+    return observableOf(this.temperatureDate);
+    
   }
 
   getHumidityData(): Observable<Temperature> {
