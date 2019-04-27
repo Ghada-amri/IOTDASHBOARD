@@ -1,6 +1,8 @@
+import { map } from 'rxjs/operators';
 import { Component, OnDestroy } from '@angular/core';
 import { NbThemeService, NbColorHelper } from '@nebular/theme';
-
+import {TempchartjsLineService} from '../../@core/data/tempchartjs-line.service';
+import { from } from 'rxjs';
 @Component({
   selector: 'ngx-tempchartjs-line',
   template: `
@@ -11,22 +13,40 @@ export class TempChartjsLineComponent implements OnDestroy {
   data: any;
   options: any;
   themeSubscription: any;
-
-  constructor(private theme: NbThemeService) {
+  labels = [];
+  temp = [];
+  hum = [];
+  constructor(private theme: NbThemeService, private temperatureService: TempchartjsLineService) {
+    console.log('we want to get TH fromDB');
+    this.temperatureService.getData().subscribe((data:any)=>{
+      console.log('temeprature humidity from database :', data);
+      for (let i = 0; i < data.temphumcurv.length; i++)  {
+        let element = data.temphumcurv[i];
+        this.labels.push(this.convertDate(element[0]));
+        this.temp.push(parseFloat(element[1]));
+        this.hum.push(parseFloat(element[2]));
+      }
+      console.table(this.labels);
+      console.log('------------- labels -----------', this.labels);
+      console.table(this.temp);
+      console.table(this.hum);
+    },(error:any)=>{
+      console.log('failed to get data');
+    });
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
       const colors: any = config.variables;
       const chartjs: any = config.variables.chartjs;
 
       this.data = {
-        labels: ['1', '2', '3', '4', '5', '6', '7'],
+        labels: this.labels,
         datasets: [{
-          data: [28, 48, 40, 19, 86, 27, 90],
+          data: this.temp,
           label: 'Température',
           backgroundColor: NbColorHelper.hexToRgbA(colors.danger, 0.3),
           borderColor: colors.danger,
         }, {
-          data: [18, 48, 77, 9, 100, 27, 40],
+          data: this.hum,
           label: 'Humidité',
           backgroundColor: NbColorHelper.hexToRgbA(colors.info, 0.3),
           borderColor: colors.info,
@@ -73,4 +93,10 @@ export class TempChartjsLineComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.themeSubscription.unsubscribe();
   }
+  convertDate(str) {
+    var date = new Date(str),
+        mnth = ("0" + (date.getMonth()+1)).slice(-2),
+        day  = ("0" + date.getDate()).slice(-2);
+    return [ date.getFullYear(), mnth, day ].join("-");
+}
 }

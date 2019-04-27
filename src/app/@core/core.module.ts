@@ -2,7 +2,7 @@ import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
 import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
-import { of as observableOf } from 'rxjs';
+import { of as observableOf, from } from 'rxjs';
 
 import { throwIfAlreadyLoaded } from './module-import-guard';
 import {
@@ -30,6 +30,8 @@ import { CountryOrderData } from './data/country-order';
 import { StatsProgressBarData } from './data/stats-progress-bar';
 import { VisitorsAnalyticsData } from './data/visitors-analytics';
 import { SecurityCamerasData } from './data/security-cameras';
+import {TempchartjsLineService} from './data/tempchartjs-line.service';
+
 
 import { UserService } from './mock/users.service';
 import { ElectricityService } from './mock/electricity.service';
@@ -90,6 +92,8 @@ const DATA_SERVICES = [
   { provide: StatsProgressBarData, useClass: StatsProgressBarService },
   { provide: VisitorsAnalyticsData, useClass: VisitorsAnalyticsService },
   { provide: SecurityCamerasData, useClass: SecurityCamerasService },
+  { provide: TempchartjsLineService, useClass: TempchartjsLineService },
+
 ];
 
 export class NbSimpleRoleProvider extends NbRoleProvider {

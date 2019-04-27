@@ -20,7 +20,7 @@ CORS(app)
 
 app.config['SECRET'] = 'my secret key'
 app.config['TEMPLATES_AUTO_RELOAD'] = True
-app.config['MQTT_BROKER_URL'] = '192.168.43.244'
+app.config['MQTT_BROKER_URL'] = '192.168.1.116'
 app.config['MQTT_BROKER_PORT'] = 1883
 app.config['MQTT_USERNAME'] = ''
 app.config['MQTT_PASSWORD'] = ''
@@ -111,12 +111,12 @@ def get_humidity():
     return jsonify({'humidity': [{'value': humidity[0][2], 'min': humidity[0][0], 'max': humidity[0][1]}]})
 
 
-@app.route('/date', methods=['GET'])
+@app.route('/temperature_humidity_per_date', methods=['GET'])
 def get_date():
   if request.method == "GET":
-    cur.execute("SELECT date,value_temp,value_hum FROM home_informations ORDER BY ID DESC LIMIT 1;")
+    cur.execute("SELECT date,value_temp,value_hum FROM home_informations  ;")
     temphumcurv = cur.fetchall()
-    return jsonify({'temphumcurv': [{'date': temphumcurv[0][0], 'tempval': temphumcurv[0][1], 'humval': temphumcurv[0][2]}]})
+    return jsonify({'temphumcurv': temphumcurv })
 
 
 """@app.route('/mosquitto', methods=['GET'])
