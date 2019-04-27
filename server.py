@@ -114,7 +114,7 @@ def get_humidity():
 @app.route('/temperature_humidity_per_date', methods=['GET'])
 def get_date():
   if request.method == "GET":
-    cur.execute("SELECT date,value_temp,value_hum FROM home_informations  ;")
+    cur.execute("SELECT date,value_temp,value_hum FROM home_informations ORDER BY date ;")
     temphumcurv = cur.fetchall()
     return jsonify({'temphumcurv': temphumcurv })
 
