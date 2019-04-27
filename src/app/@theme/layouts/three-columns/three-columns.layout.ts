@@ -1,7 +1,11 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
-
+/*        <nb-sidebar-header *ngIf="currentTheme !== 'corporate'">
+          <a href="#" class="btn btn-hero-success main-btn">
+            <i class="ion ion-social-github"></i> <span>Support Us</span>
+          </a>
+        </nb-sidebar-header> */
 // TODO: move layouts into the framework
 @Component({
   selector: 'ngx-three-columns-layout',
@@ -13,11 +17,7 @@ import { takeWhile } from 'rxjs/operators';
       </nb-layout-header>
 
       <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive >
-        <nb-sidebar-header *ngIf="currentTheme !== 'corporate'">
-          <a href="#" class="btn btn-hero-success main-btn">
-            <i class="ion ion-social-github"></i> <span>Support Us</span>
-          </a>
-        </nb-sidebar-header>
+
         <ng-content select="nb-menu"></ng-content>
       </nb-sidebar>
 

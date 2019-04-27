@@ -1,0 +1,22 @@
+@import 'C:/Users/Ghadghouda/Desktop/ngx-admin/src/app/@theme/styles/themes';
+
+@include nb-install-component() {
+  ngx-echarts-pi,
+  ngx-echarts-lin,
+  ngx-echarts-radar {
+    display: block;
+    height: nb-theme(card-height-medium);
+    width: 100%;
+  }
+  ngx-echarts-lin
+  {
+    height: 100%;
+    width: 100%;
+  }
+  
+  ngx-echarts-pi
+  {
+    height: 100%;
+    width: 100%;
+  }
+}

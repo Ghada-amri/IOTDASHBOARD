@@ -1,0 +1,22 @@
+@import '../../@theme/styles/themes';
+
+@include nb-install-component() {
+
+  ngx-tempchartjs-line {
+    display: block;
+   // height: nb-theme(card-height-medium);
+   // width:  nb-theme(card-width-large);
+  height: 370px;
+  width: 610px;
+
+    /deep/ chart {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  ngx-smart-table2{
+    height: 100%;
+    width: 100%;
+  }
+}
