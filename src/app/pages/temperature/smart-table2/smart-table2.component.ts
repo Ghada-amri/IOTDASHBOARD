@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-
-import { SmartTableData } from '../../../@core/data/smart-table';
+import { SmartTableTempData } from '../../../@core/data/smart-tabletemp';
 //import { TempHumcurvedata, temphumcurve } from '../../../@core/data/tempchartjs-line';
 //import { forkJoin } from 'rxjs';
 
@@ -15,26 +14,6 @@ import { SmartTableData } from '../../../@core/data/smart-table';
   `],
 })
 export class SmartTable2Component {
-  settings = {
-    columns: {
-      date: {
-        title: 'Date',
-        type: 'string',
-      },
-      temperature: {
-        title: 'T°C',
-        type: 'number',
-      },
-      humidity: {
-        title: 'H%',
-        type: 'number',
-      },
-    },
-  };
-
-
-
-  /*
   settings = {
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
@@ -68,7 +47,7 @@ export class SmartTable2Component {
 
    source: LocalDataSource = new LocalDataSource();
   
-  constructor(private service: SmartTableData) {
+  constructor(private service: SmartTableTempData) {
     const data = this.service.getData();
     this.source.load(data);
   }
@@ -78,5 +57,6 @@ export class SmartTable2Component {
     } else {
       event.confirm.reject();
     }
-  }*/
+  }
+  
 }

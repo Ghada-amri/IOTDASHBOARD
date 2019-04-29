@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 
-import { SmartTableData } from '../../../@core/data/smart-table';
+import { SmartTableGasData } from '../../../@core/data/smart-tablegas';
 
 @Component({
   selector: 'ngx-smart-table1',
@@ -39,11 +39,11 @@ export class SmartTab1Component {
         type: 'string',
       },
       smoke: {
-        title: 'Mesure...',
+        title: 'fumée',
         type: 'number',
       },
-      ugaztoxique: {
-        title: 'Mesure...',
+      gaztoxique: {
+        title: 'gaz toxique',
         type: 'number',
       },
     },
@@ -51,7 +51,7 @@ export class SmartTab1Component {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableData) {
+  constructor(private service: SmartTableGasData) {
     const data = this.service.getData();
     this.source.load(data);
   }

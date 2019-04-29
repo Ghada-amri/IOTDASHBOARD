@@ -7,6 +7,15 @@
      <nb-card>
       <nb-card-header>Courbe de Température et d'Humidité</nb-card-header>
       <nb-card-body>
+
+<form method="POST" action="">
+        <label for="start">date de début:</label>
+          <input type="date" id="start" name="d_debut" value="2018-08-22">
+        <label for="">date finale:</label>
+        <input type="date" id="end" name="d_fin"  value="2018-09-22">
+
+          
+</form>
         <ngx-tempchartjs-line></ngx-tempchartjs-line>
       </nb-card-body>
     </nb-card>

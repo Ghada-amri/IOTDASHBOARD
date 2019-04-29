@@ -20,7 +20,7 @@ CORS(app)
 
 app.config['SECRET'] = 'my secret key'
 app.config['TEMPLATES_AUTO_RELOAD'] = True
-app.config['MQTT_BROKER_URL'] = '192.168.1.116'
+app.config['MQTT_BROKER_URL'] = '192.168.43.244'
 app.config['MQTT_BROKER_PORT'] = 1883
 app.config['MQTT_USERNAME'] = ''
 app.config['MQTT_PASSWORD'] = ''
@@ -62,7 +62,6 @@ def handle_messages(client, userdata, message):
   cur.execute("INSERT INTO mosquittotab (message) VALUES (%s)", data)
   conn.commit()"""
 
-
 """@mqtt.on_message()
 def handle_messages(client, userdata, message):
   print('Received message on topic {}: {}'
@@ -71,7 +70,6 @@ def handle_messages(client, userdata, message):
   cur.execute(
     "INSERT INTO home_informations VALUES ('4','0','100',%s,'0','100','66');", data);
   conn.commit()"""
-
 
 """@app.route('/', methods=['GET', 'POST'])
 def index():
@@ -94,6 +92,17 @@ def index():
     return render_template('index.html', drivers_data=drivers_data)
   return render_template('index.html')"""
 
+"""@app.route('//localhost:4200/#/pages/temp-hum', methods=['POST'])
+def index():
+  if request.method == "POST":
+    details = request.form
+    date_debut = details['d_debut']
+    date_fin = details['d_fin']
+    print(date_fin)
+    print("helloooo")
+    print(date_debut)
+    return date_debut, date_fin"""
+
 
 @app.route('/temperature', methods=['GET'])
 def get_temperature():
@@ -114,10 +123,18 @@ def get_humidity():
 @app.route('/temperature_humidity_per_date', methods=['GET'])
 def get_date():
   if request.method == "GET":
+    cur.execute(
+      "SELECT date,value_temp,value_hum FROM home_informations ORDER BY date;")
+    temphumcurv = cur.fetchall()
+    return jsonify({'temphumcurv': temphumcurv})
+
+
+"""@app.route('/temperature_humidity_per_date/', methods=['GET'])
+def get_date():
+  if request.method == "GET":
     cur.execute("SELECT date,value_temp,value_hum FROM home_informations ORDER BY date ;")
     temphumcurv = cur.fetchall()
-    return jsonify({'temphumcurv': temphumcurv })
-
+    return jsonify({'temphumcurv': temphumcurv })"""
 
 """@app.route('/mosquitto', methods=['GET'])
 def aff():
