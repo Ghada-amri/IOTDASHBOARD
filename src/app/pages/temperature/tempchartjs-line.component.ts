@@ -58,7 +58,7 @@ export class TempChartjsLineComponent implements OnDestroy {
 //console.table(this.dated);
 //this.datef = this.convertDate((document.getElementById("end") as HTMLInputElement).value); 
 //console.table(this.datef);
-      this.options = {
+      this.options = { 
         responsive: true,
         maintainAspectRatio: false,
         scales: {

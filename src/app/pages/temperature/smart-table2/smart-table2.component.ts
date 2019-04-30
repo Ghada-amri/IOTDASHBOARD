@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
+
+import { SmartTableData } from '../../../@core/data/smart-table';
 import { SmartTableTempData } from '../../../@core/data/smart-tabletemp';
 //import { TempHumcurvedata, temphumcurve } from '../../../@core/data/tempchartjs-line';
 //import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'ngx-smart-table2',
-  templateUrl: './smart-table2.component.html',
+  templateUrl: './smart-table2.component.html', 
   styles: [`
     nb-card {
       transform: translate3d(0, 0, 0);
@@ -46,7 +48,7 @@ export class SmartTable2Component {
   };
 
    source: LocalDataSource = new LocalDataSource();
-  
+
   constructor(private service: SmartTableTempData) {
     const data = this.service.getData();
     this.source.load(data);
@@ -58,5 +60,4 @@ export class SmartTable2Component {
       event.confirm.reject();
     }
   }
-  
-}
+  }

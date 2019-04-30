@@ -128,6 +128,13 @@ def get_date():
     temphumcurv = cur.fetchall()
     return jsonify({'temphumcurv': temphumcurv})
 
+@app.route('/gasdata', methods=['GET'])
+def get_gaz():
+  if request.method == "GET":
+    cur.execute("SELECT fumee,gaz_toxique,air_fraiche FROM home_informations ORDER BY ID DESC LIMIT 1;")
+    gasdata = cur.fetchall()
+    return jsonify({'gasdata': [{'fumee': gasdata[0][2], 'gaztoxique': gasdata[0][0], 'airfraiche': gasdata[0][1]}]})
+
 
 """@app.route('/temperature_humidity_per_date/', methods=['GET'])
 def get_date():

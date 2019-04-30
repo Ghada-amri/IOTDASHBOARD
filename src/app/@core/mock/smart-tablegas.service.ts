@@ -35,7 +35,7 @@ export class SmartTableGasService extends SmartTableGasData {
     gaztoxique: '@mdo',
   },
   ];
- 
+
   getData() {
     return this.data;
   }

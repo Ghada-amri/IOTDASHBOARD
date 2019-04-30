@@ -23,6 +23,8 @@ import { CountryOrderService } from './country-order.service';
 import { StatsProgressBarService } from './stats-progress-bar.service';
 import { VisitorsAnalyticsService } from './visitors-analytics.service';
 import { SecurityCamerasService } from './security-cameras.service';
+import { EchartPiGasService } from './echart-pi-gas.service';
+
 
 const SERVICES = [
   UserService,
@@ -30,6 +32,7 @@ const SERVICES = [
   SmartTableGasService,
   SmartTableService,
   SmartTableTempService,
+  EchartPiGasService,
   UserActivityService,
   OrdersChartService,
   ProfitChartService,
