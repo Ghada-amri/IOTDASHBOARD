@@ -17,6 +17,7 @@ import { SmartTableData } from './data/smart-table';
 import { SmartTableGasData } from './data/smart-tablegas';
 import { SmartTableTempData } from './data/smart-tabletemp';
 import { Echart_pi_gas_Data } from './data/echart-pi-gas-data';
+import { Gascurvedata } from './data/echarts-lin-gasdata';
 import { UserActivityData } from './data/user-activity';
 import { OrdersChartData } from './data/orders-chart';
 import { ProfitChartData } from './data/profit-chart';
@@ -42,6 +43,7 @@ import { SmartTableService } from './mock/smart-table.service';
 import { SmartTableGasService } from './mock/smart-tablegas.service';
 import { SmartTableTempService } from './mock/smart-tabletemp.service';
 import { EchartPiGasService } from './mock/echart-pi-gas.service';
+import { EchartsLinGasCurvService} from './mock/echarts-lin-gascurv.service';
 import { UserActivityService } from './mock/user-activity.service';
 import { OrdersChartService } from './mock/orders-chart.service';
 import { ProfitChartService } from './mock/profit-chart.service';
@@ -85,6 +87,7 @@ const DATA_SERVICES = [
   { provide: SmartTableGasData, useClass: SmartTableGasService },
   { provide: SmartTableTempData, useClass: SmartTableTempService },
   { provide: Echart_pi_gas_Data, useClass: EchartPiGasService },
+  { provide: Gascurvedata, useClass: EchartsLinGasCurvService },
   { provide: UserActivityData, useClass: UserActivityService },
   { provide: OrdersChartData, useClass: OrdersChartService },
   { provide: ProfitChartData, useClass: ProfitChartService },

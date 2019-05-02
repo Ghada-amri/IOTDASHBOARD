@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
+import { EchartsLinGasCurvService } from '../../@core/mock/echarts-lin-gascurv.service';
 
 @Component({
   selector: 'ngx-echarts-lin',
@@ -10,8 +11,35 @@ import { NbThemeService } from '@nebular/theme';
 export class EchartsLinComponent implements AfterViewInit, OnDestroy {
   options: any = {};
   themeSubscription: any;
+  gaztoxiquedata =[];
+  fumeedata =[];
+  airfraichedata = [];
+  gazdate =[];
+  constructor(private theme: NbThemeService,  private gascurvService: EchartsLinGasCurvService) 
+  {
+    console.log('we want to get gas curv data fromDB');
+    this.gascurvService.getDatagascurv().subscribe((data:any)=>{
+      console.log('fumee gaz toxique et air fraiche :', data);
+      for (let i = 0; i < data.gazcurv.length; i++)  {
+        let element = data.gazcurv[i];
+        this.fumeedata.push(parseFloat(element[1]));
+        this.gaztoxiquedata.push(parseFloat(element[2]));
+        this.airfraichedata.push(parseFloat(element[3]));
+        this.gazdate.push(this.convertDate(element[0]));
+      }
+      console.log('------------- fumee -----------');
+      console.table(this.fumeedata);
+      console.log('------------- gaztoxique -----------');
+      console.table(this.gaztoxiquedata);
+      console.log('------------- air fraiche -----------');
+      console.table(this.airfraichedata);
+      console.log('------------- gaz date -----------');
+      console.table(this.gazdate);
+      
+    },(error:any)=>{
+      console.log('failed to get data');
+    });
 
-  constructor(private theme: NbThemeService) {
   }
 
   ngAfterViewInit() {
@@ -29,7 +57,7 @@ export class EchartsLinComponent implements AfterViewInit, OnDestroy {
         },
         legend: {
           left: 'left',
-          data: ['Line 1', 'Line 2', 'Line 3', 'Line 4'],
+          data: ['fumée', 'Gaz toxique', 'air fraîche'],
           textStyle: {
             color: echarts.textColor,
           },
@@ -37,7 +65,7 @@ export class EchartsLinComponent implements AfterViewInit, OnDestroy {
         xAxis: [
           {
             type: 'category',
-            data: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
+            data:this.gazdate,
             axisTick: {
               alignWithLabel: true,
             },
@@ -81,25 +109,19 @@ export class EchartsLinComponent implements AfterViewInit, OnDestroy {
         },
         series: [
           {
-            name: 'Line 1',
+            name: 'fumée',
             type: 'line',
-            data: [1, 3, 9, 27, 81, 247, 741, 2223, 6669],
+            data: this.fumeedata,
           },
           {
-            name: 'Line 2',
+            name: 'Gaz toxique',
             type: 'line',
-            data: [1, 2, 4, 8, 16, 32, 64, 128, 256],
+            data: this.gaztoxiquedata,
           },
           {
-            name: 'Line 3',
+            name:'air fraîche',
             type: 'line',
-            data: [1 / 2, 1 / 4, 1 / 8, 1 / 16, 1 / 32, 1 / 64, 1 / 128, 1 / 256, 1 / 512],
-          },
-          {
-            name :'Line 4',
-            type :'line' ,
-            data: [10, 20, 40, 80, 160, 320, 640, 1280, 2560],
-            color:'blue',
+            data: this.airfraichedata,
           }
         ],
       };
@@ -109,4 +131,10 @@ export class EchartsLinComponent implements AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this.themeSubscription.unsubscribe();
   }
+  convertDate(str) {
+    var date = new Date(str),
+        mnth = ("0" + (date.getMonth()+1)).slice(-2),
+        day  = ("0" + date.getDate()).slice(-2);
+    return [ date.getFullYear(), mnth, day ].join("-");
+}
 }

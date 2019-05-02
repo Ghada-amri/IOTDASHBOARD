@@ -34,7 +34,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/temp-hum',
   },
   {
-    title: 'Qualité de l aire',
+    title: 'Qualité de l air',
     icon: 'nb-bar-chart',
     link: 'air-quality',
   },

@@ -6,6 +6,7 @@ import { ElectricityService } from './electricity.service';
 import { SmartTableService } from './smart-table.service';
 import { SmartTableGasService } from './smart-tablegas.service';
 import { SmartTableTempService } from './smart-tabletemp.service';
+import { EchartsLinGasCurvService} from './echarts-lin-gascurv.service';
 import { UserActivityService } from './user-activity.service';
 import { OrdersChartService } from './orders-chart.service';
 import { ProfitChartService } from './profit-chart.service';
@@ -32,6 +33,7 @@ const SERVICES = [
   SmartTableGasService,
   SmartTableService,
   SmartTableTempService,
+  EchartsLinGasCurvService,
   EchartPiGasService,
   UserActivityService,
   OrdersChartService,
