@@ -1,4 +1,4 @@
-import { SmartTableTempInterface } from './../../../@core/data/smart-tabletemp';
+ import { SmartTableTempInterface } from './../../../@core/data/smart-tabletemp';
 import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 
@@ -19,7 +19,7 @@ import { SmartTableTempService } from '../../../@core/mock/smart-tabletemp.servi
 })
 export class SmartTable2Component {
   settings = {
-    add: {
+    /*add: {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
@@ -32,7 +32,7 @@ export class SmartTable2Component {
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
       confirmDelete: true,
-    },
+    },*/
     columns: {
       date: {
         title: 'Date',
@@ -59,6 +59,7 @@ export class SmartTable2Component {
 dataf : SmartTableTempInterface[] = [];
 source: LocalDataSource = new LocalDataSource();
 //dataf : [];
+
 constructor(private temperatureService: SmartTableTempService) {
   console.log('we want to get TH fromDB');
   this.temperatureService.getData().subscribe((data:any)=>{
@@ -66,16 +67,13 @@ constructor(private temperatureService: SmartTableTempService) {
    
     for (let i = 0; i < data.temphumcurv.length; i++)  {
       let element = data.temphumcurv[i];
-     //this.dataf[i].date.push(this.convertDate(element[0]));
-     //this.dataf[i].date=this.source.add(this.convertDate(element[0]));
-     //this.dataf[i].temperature=this.source.add(element[1]);
-     //this.dataf[i].humidity=this.source.add(element[2]);
-     // this.dataf[i].temperature.push(element[1]);
-     // this.dataf[i].humidity.push(parseFloat(element[2]));
-      this.dataf.push(element);
-     //this.source.add(this.dataf[i]);
+      this.dataf.push({
+      date: this.convertDate(element[0]),
+      temperature: element[1],
+      humidity: element[2]
+    });
     }
-    console.log('------------- dataf -----------');
+    console.log('------------- temp dataf -----------');
     console.table(this.dataf);
     this.source.load(this.dataf);
     
@@ -83,17 +81,17 @@ constructor(private temperatureService: SmartTableTempService) {
     console.log('failed to get data');
   });
 }
-  onDeleteConfirm(event): void {
+  /*onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
       event.confirm.resolve();
     } else {
       event.confirm.reject();
     }
-  }
+  }*/
   convertDate(str) {
     var date = new Date(str),
         mnth = ("0" + (date.getMonth()+1)).slice(-2),
         day  = ("0" + date.getDate()).slice(-2);
     return String([ date.getFullYear(), mnth, day ].join("-"));
-}
+  }
   }

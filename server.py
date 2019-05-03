@@ -120,15 +120,6 @@ def get_humidity():
     return jsonify({'humidity': [{'value': humidity[0][2], 'min': humidity[0][0], 'max': humidity[0][1]}]})
 
 
-@app.route('/temperature_humidity_per_date', methods=['GET'])
-def get_date():
-  if request.method == "GET":
-    cur.execute(
-      "SELECT date,value_temp,value_hum FROM home_informations ORDER BY date;")
-    temphumcurv = cur.fetchall()
-    return jsonify({'temphumcurv': temphumcurv})
-
-
 @app.route('/gasdata', methods=['GET'])
 def get_gaz():
   if request.method == "GET":
@@ -137,13 +128,43 @@ def get_gaz():
     return jsonify({'gasdata': [{'fumee': gasdata[0][2], 'gaztoxique': gasdata[0][0], 'airfraiche': gasdata[0][1]}]})
 
 
+
+
+@app.route('/temperature_humidity_per_date', methods=['GET'])
+def get_tempcurvdate():
+  if request.method == "GET":
+    cur.execute(
+      "SELECT date,value_temp,value_hum FROM home_informations ORDER BY date LIMIT 6;")
+    temphumcurv = cur.fetchall()
+    return jsonify({'temphumcurv': temphumcurv})
+
 @app.route('/fumee_gaztoxique_airfraiche_per_date', methods=['GET'])
 def get_gazcurvdata():
+  if request.method == "GET":
+    cur.execute(
+      "SELECT date,fumee,gaz_toxique,air_fraiche FROM home_informations ORDER BY date LIMIT 6;")
+    gazcurv = cur.fetchall()
+    return jsonify({'gazcurv': gazcurv})
+
+
+@app.route('/temperature_humidity_per_date_tab', methods=['GET'])
+def get_temptabdate():
+  if request.method == "GET":
+    cur.execute(
+      "SELECT date,value_temp,value_hum FROM home_informations ORDER BY date;")
+    temphumcurv = cur.fetchall()
+    return jsonify({'temphumcurv': temphumcurv})
+
+
+@app.route('/fumee_gaztoxique_airfraiche_per_date_tab', methods=['GET'])
+def get_gaztabdata():
   if request.method == "GET":
     cur.execute(
       "SELECT date,fumee,gaz_toxique,air_fraiche FROM home_informations ORDER BY date;")
     gazcurv = cur.fetchall()
     return jsonify({'gazcurv': gazcurv})
+
+
 
 
 """@app.route('/mosquitto', methods=['GET'])

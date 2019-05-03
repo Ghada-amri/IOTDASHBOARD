@@ -7,7 +7,7 @@ import { HttpClient , HttpResponse } from '@angular/common/http';
 export class SmartTableGasService extends SmartTableGasData {
 
  gastabledata :JSON;
-  private gasechartUrl = "http://127.0.0.1:5000/fumee_gaztoxique_airfraiche_per_date";
+  private gasechartUrl = "http://127.0.0.1:5000/fumee_gaztoxique_airfraiche_per_date_tab";
 
   constructor(private httpClient: HttpClient) { 
     super();

@@ -4,7 +4,20 @@
   </nb-card-header>
 
   <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="source">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+<!--
+<nb-card>
+  <nb-card-header>
+    tableau de temperature et humidité
+  </nb-card-header>
+
+  <nb-card-body>
     <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
     </ng2-smart-table>
   </nb-card-body>
 </nb-card>
+
+-->

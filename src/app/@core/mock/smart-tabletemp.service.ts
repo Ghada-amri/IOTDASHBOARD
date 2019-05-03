@@ -8,12 +8,13 @@ import { HttpClient , HttpResponse } from '@angular/common/http';
 @Injectable()
 export class SmartTableTempService extends SmartTableTempData {
   temptabledata :JSON;
-  private tempechartUrl = "http://127.0.0.1:5000/temperature_humidity_per_date";
+  private tempechartUrl = "http://127.0.0.1:5000/temperature_humidity_per_date_tab";
   ngOnInit() {
   }
   constructor(private httpClient: HttpClient) { 
     super();
   }
+  
   private data: SmartTableTempInterface = {
     date: 2,
     temperature: 30,

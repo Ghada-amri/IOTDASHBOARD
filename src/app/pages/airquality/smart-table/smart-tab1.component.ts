@@ -31,11 +31,11 @@ export class SmartTab1Component {
       confirmDelete: true,
     },
     columns: {
-      date: {
+      gasdate: {
         title: 'Date',
         type: 'string',
       },
-      smoke: {
+      fumee: {
         title: 'fumée',
         type: 'number',
       },
@@ -43,7 +43,7 @@ export class SmartTab1Component {
         title: 'gaz toxique',
         type: 'number',
       },
-      heure: {
+      airfraiche: {
         title: 'air fraiche',
         type: 'string',
       },
@@ -67,16 +67,15 @@ constructor(private gastableService: SmartTableGasService) {
    
     for (let i = 0; i < data.gazcurv.length; i++)  {
       let element = data.gazcurv[i];
-     //this.dataf[i].date.push(this.convertDate(element[0]));
-     //this.dataf[i].date=this.source.add(this.convertDate(element[0]));
-     //this.dataf[i].temperature=this.source.add(element[1]);
-     //this.dataf[i].humidity=this.source.add(element[2]);
-     // this.dataf[i].temperature.push(element[1]);
-     // this.dataf[i].humidity.push(parseFloat(element[2]));
-      this.dataf.push(element);
-     //this.source.add(this.dataf[i]);
+      this.dataf.push({
+        gasdate: this.convertDate(element[0]),
+        fumee: element[1],
+        gaztoxique: element[2],
+        airfraiche: element[3]
+      });
+
     }
-    console.log('------------- dataf -----------');
+    console.log('------------- gas dataf -----------');
     console.table(this.dataf);
     this.source.load(this.dataf);
     
