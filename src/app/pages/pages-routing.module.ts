@@ -1,5 +1,9 @@
+import { LoginComponent } from './authentification/login/login.component';
+import { RegisterComponent } from './authentification/register/register.component';
+import { LogoutComponent } from './authentification/logout/logout.component';
+
 import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -10,10 +14,23 @@ import { TemperatureComponent } from './temperature/temperature.component';
 import { EclairageComponent } from './eclairage/eclairage.component';
 import { MusicComponent } from './music/music.component';
 
+
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [{
+    path: 'login-root',
+    component: LoginComponent,
+  },
+  {
+  path: 'register-root',
+  component: RegisterComponent,
+  },
+  {
+  path: 'logout-root',
+  component: LogoutComponent,
+  },
+  {
       path: 'temp-hum',
       component: TemperatureComponent,
   },

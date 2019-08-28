@@ -9,23 +9,13 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Login',
         icon: 'nb-locked',
-        link: '/auth/login',
+        link: 'login-root',
       },
       {
         title: 'Register',
         icon: 'nb-person',
         link: '/auth/register',
-      },
-      {
-        title: 'Request Password',
-        icon: 'nb-alert',
-        link: '/auth/request-password',
-      },
-      {
-        title: 'Reset Password',
-        icon: 'nb-lightbulb',
-        link: '/auth/reset-password',
-      },
+      }
     ],
   },
   {

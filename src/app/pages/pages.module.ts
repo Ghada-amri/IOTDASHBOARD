@@ -25,6 +25,9 @@ import { HomeRoomSelectorComponent } from './eclairage/homerooms/homeroom-select
 import { MusicComponent } from './music/music.component';
 import { MusicPlayerComponent } from './music/musicplayer/musicplayer.component';
 import { TempChartjsLineComponent } from './temperature/tempchartjs-line.component';
+import { LoginComponent } from './authentification/login/login.component';
+import { RegisterComponent } from './authentification/register/register.component';
+import { LogoutComponent } from './authentification/logout/logout.component';
 const PAGES_COMPONENTS = [
   PagesComponent,
 ];
@@ -57,7 +60,10 @@ const PAGES_COMPONENTS = [
     HomeRoomSelectorComponent,
     MusicComponent,
     MusicPlayerComponent,
-    TempChartjsLineComponent
+    TempChartjsLineComponent,
+    LoginComponent,
+    RegisterComponent,
+    LogoutComponent
   ],
 })
 export class PagesModule {
